@@ -1,0 +1,67 @@
+{
+    "name": "iperamuna/filament-ace-editor",
+    "description": "Ace Editor implementation for Filament 5 Forms and Infolists",
+    "keywords": [
+        "laravel",
+        "filament",
+        "filament-ace-editor",
+        "ace-editor",
+        "code-editor"
+    ],
+    "homepage": "https://github.com/iperamuna/filament-ace-editor",
+    "support": {
+        "issues": "https://github.com/iperamuna/filament-ace-editor/issues",
+        "source": "https://github.com/iperamuna/filament-ace-editor"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Indunil Peramuna",
+            "email": "iperamuna@gmail.com",
+            "homepage": "https://iperamuna.online",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0|^4.0|^5.0",
+        "spatie/laravel-package-tools": "^1.15.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "orchestra/testbench": "^8.0|^9.0",
+        "pestphp/pest": "^2.33|^3.0",
+        "pestphp/pest-plugin-laravel": "^2.3|^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Iperamuna\\FilamentAceEditor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Iperamuna\\FilamentAceEditor\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Iperamuna\\FilamentAceEditor\\FilamentAceEditorServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
