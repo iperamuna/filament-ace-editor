@@ -36,3 +36,19 @@ it('has correct default values', function () {
         ->and($component->getOptions())->toBeArray()
         ->and($component->getExtensions())->toBeArray();
 });
+
+it('can evaluate closures for toggleable and defaultReadOnly', function () {
+    $component = AceEditor::make('code')
+        ->toggleable(fn() => false)
+        ->defaultReadOnly(fn() => false);
+
+    expect($component->getIsToggleable())->toBeFalse()
+        ->and($component->isDefaultReadOnly())->toBeFalse();
+
+    $component2 = AceEditor::make('code')
+        ->toggleable(fn() => true)
+        ->defaultReadOnly(fn() => true);
+
+    expect($component2->getIsToggleable())->toBeTrue()
+        ->and($component2->isDefaultReadOnly())->toBeTrue();
+});

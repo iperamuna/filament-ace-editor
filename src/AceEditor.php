@@ -18,9 +18,9 @@ class AceEditor extends Field
 
     protected int $maxLines = 50;
 
-    protected bool $isToggleable = true;
+    protected bool|\Closure $isToggleable = true;
 
-    protected bool $defaultReadOnly = true;
+    protected bool|\Closure $defaultReadOnly = true;
 
     protected array $options = [];
 
@@ -75,14 +75,14 @@ class AceEditor extends Field
         return $this;
     }
 
-    public function toggleable(bool $condition = true): static
+    public function toggleable(bool|\Closure $condition = true): static
     {
         $this->isToggleable = $condition;
 
         return $this;
     }
 
-    public function defaultReadOnly(bool $condition = true): static
+    public function defaultReadOnly(bool|\Closure $condition = true): static
     {
         $this->defaultReadOnly = $condition;
 
@@ -123,12 +123,12 @@ class AceEditor extends Field
 
     public function getIsToggleable(): bool
     {
-        return $this->isToggleable;
+        return (bool) $this->evaluate($this->isToggleable);
     }
 
     public function isDefaultReadOnly(): bool
     {
-        return $this->defaultReadOnly;
+        return (bool) $this->evaluate($this->defaultReadOnly);
     }
 
     public function getExtensions(): array

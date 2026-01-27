@@ -81,9 +81,9 @@
         }" wire:ignore {{ $getExtraAttributeBag() }}>
 
         @if($getIsToggleable())
-            <button type="button" x-on:click="toggleEdit()" x-text="isReadOnly ? 'Edit' : 'Done'"
-                class="absolute top-2 right-4 z-10 px-3 py-1 text-xs font-medium text-white bg-gray-600 rounded-md hover:bg-gray-700 opacity-80 hover:opacity-100 transition"
-                style="right: 25px; top: 5px;">
+            <button type="button" x-on:click="toggleEdit()" x-text="isReadOnly ? '{{ __('Edit') }}' : '{{ __('Done') }}'"
+                class="absolute top-2 right-6 z-50 px-4 py-1.5 text-[10px] font-bold tracking-wider text-white uppercase bg-indigo-600 hover:bg-indigo-700 rounded shadow-md transition-all duration-200"
+                style="pointer-events: auto;">
             </button>
         @endif
 
