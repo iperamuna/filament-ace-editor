@@ -1,0 +1,60 @@
+<x-dynamic-component :component="$getEntryWrapperView()" :entry="$entry">
+    <div style="border-radius: 0.5rem; overflow: hidden; border: 1px solid #d1d5db;" x-data="{
+            state: @js((string) $getState()),
+            editor: null,
+            init() {
+                if (window.ace) {
+                    this.loadEditor();
+                    return;
+                }
+
+                let script = document.getElementById('ace-script-loader');
+
+                if (!script) {
+                    script = document.createElement('script');
+                    script.id = 'ace-script-loader';
+                    script.src = '{{ config('filament-ace-editor.base_url') }}/{{ config('filament-ace-editor.file') }}';
+                    document.head.appendChild(script);
+                }
+
+                if (script.complete) {
+                    this.loadEditor();
+                } else {
+                    script.addEventListener('load', () => {
+                        this.loadEditor();
+                    });
+                }
+            },
+            loadEditor() {
+                this.editor = ace.edit($refs.aceEditor, {
+                    maxLines: {{ $getMaxLines() }},
+                    minLines: {{ $getMinLines() }},
+                    autoScrollEditorIntoView: true,
+                    readOnly: true,
+                    highlightActiveLine: false,
+                    highlightGutterLine: false,
+                    ...{{ json_encode(config('filament-ace-editor.editor_options')) }},
+                    ...{{ json_encode($getOptions()) }}
+                });
+                
+                this.editor.setTheme('ace/theme/{{ $getTheme() }}');
+                this.editor.session.setMode('ace/mode/{{ $getMode() }}');
+
+                // Load Enabled Extensions
+                let enabledExtensions = {{ json_encode(array_merge(config('filament-ace-editor.enabled_extensions'), $getExtensions())) }};
+                
+                if (window.ace) {
+                    ace.config.set('basePath', '{{ config('filament-ace-editor.base_url') }}');
+                    enabledExtensions.forEach(ext => {
+                        ace.config.loadModule('ace/ext/' + ext);
+                    });
+                }
+                
+                if (this.state) {
+                    this.editor.setValue(this.state, -1);
+                }
+            }
+        }" wire:ignore {{ $getExtraAttributeBag() }}>
+        <div x-ref="aceEditor" style="width: 100%;"></div>
+    </div>
+</x-dynamic-component>
