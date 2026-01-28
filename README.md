@@ -1,4 +1,4 @@
-# Filament Ace Editor
+# Filament Ace Editor (Supporting Filament v5)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/iperamuna/filament-ace-editor.svg?style=flat-square)](https://packagist.org/packages/iperamuna/filament-ace-editor)
 [![Total Downloads](https://img.shields.io/packagist/dt/iperamuna/filament-ace-editor.svg?style=flat-square)](https://packagist.org/packages/iperamuna/filament-ace-editor)
