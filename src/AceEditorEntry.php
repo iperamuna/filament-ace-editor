@@ -37,14 +37,16 @@ class AceEditorEntry extends Entry
     public function extensions(array $extensions): static
     {
         $this->extensions = $extensions;
+
         return $this;
     }
 
     public function addExtension(string $extension): static
     {
-        if (!in_array($extension, $this->extensions)) {
+        if (! in_array($extension, $this->extensions)) {
             $this->extensions[] = $extension;
         }
+
         return $this;
     }
 

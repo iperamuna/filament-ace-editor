@@ -39,15 +39,15 @@ it('has correct default values', function () {
 
 it('can evaluate closures for toggleable and defaultReadOnly', function () {
     $component = AceEditor::make('code')
-        ->toggleable(fn() => false)
-        ->defaultReadOnly(fn() => false);
+        ->toggleable(fn () => false)
+        ->defaultReadOnly(fn () => false);
 
     expect($component->getIsToggleable())->toBeFalse()
         ->and($component->isDefaultReadOnly())->toBeFalse();
 
     $component2 = AceEditor::make('code')
-        ->toggleable(fn() => true)
-        ->defaultReadOnly(fn() => true);
+        ->toggleable(fn () => true)
+        ->defaultReadOnly(fn () => true);
 
     expect($component2->getIsToggleable())->toBeTrue()
         ->and($component2->isDefaultReadOnly())->toBeTrue();
