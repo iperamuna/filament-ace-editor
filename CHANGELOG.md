@@ -2,6 +2,12 @@
 
 All notable changes to `filament-ace-editor` will be documented in this file.
 
+## v1.3.0 - 2026-07-11
+
+### Changed
+- **Laravel 13 Support**: Updated dependency constraints to support Laravel 13 framework.
+- **Dependency Upgrades**: Upgraded Testbench 11 and Pest 4 for development.
+
 ## v1.2.0 - 2026-02-02
 
 ### Changed
